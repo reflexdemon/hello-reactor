@@ -1,5 +1,6 @@
 package io.vpv.reactive.helloreactor.model;
 
+import java.util.Objects;
 import java.util.StringJoiner;
 
 public class Person {
@@ -17,6 +18,15 @@ public class Person {
 
     public String getLastName() {
         return lastName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Person)) return false;
+        Person person = (Person) o;
+        return Objects.equals(getFirstName(), person.getFirstName()) &&
+                Objects.equals(getLastName(), person.getLastName());
     }
 
     @Override
